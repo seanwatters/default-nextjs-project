@@ -4,6 +4,7 @@ module.exports = {
     '!**/*.d.ts',
     '!**/node_modules/**',
     '!**/__tests__/**',
+    '!**/jest.config.js',
   ],
   setupFilesAfterEnv: ['<rootDir>/__tests__/config/setupTests.js'],
   testPathIgnorePatterns: [
@@ -15,6 +16,7 @@ module.exports = {
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
     '^.+\\.(css|scss)$': '<rootDir>/__tests__/config/cssTransform.js',
+    '^.+\\.tsx?$': 'ts-jest',
   },
   transformIgnorePatterns: [
     '/node_modules/',
@@ -23,6 +25,8 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
   },
+  moduleDirectories: ['node_modules', '.'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   coverageDirectory: 'coverage',
   snapshotSerializers: ['enzyme-to-json'],
 };
